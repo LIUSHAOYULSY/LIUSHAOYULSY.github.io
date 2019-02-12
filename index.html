@@ -62,6 +62,55 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-19年二月12日" class="post-19年二月12日 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/12/19年二月12日/" data-id="cjs1u0pt1000028w4huzv7ser" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>算法一：reduction</p>
+<p>因为除法很慢，效率很低，所以将除法转化成乘法，位运算，和减法</p>
+<p>求 x mod m</p>
+<p> m的位数是k</p>
+<p>使用条件: x位数不大于2*k。对同一个数反复取模。</p>
+<p>使用方法（这里是非负数）：</p>
+<p>计算常量 mu=b^2k / m</p>
+<p>取模时：</p>
+<p>q1 = x / b^(k-1)</p>
+<p>q2 = q1 * mu</p>
+<p>q3 = q2 / b^(k+1)r1 = x % b^(k+1)</p>
+<p>r2 = (q3 * m) % b^(k+1)</p>
+<p>r = r1 - r2</p>
+<p>if ( r &gt; m ) r -= m</p>
+<p>return r</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/02/12/19年二月12日/">
+    <time datetime="2019-02-12T13:57:48.071Z" class="entry-date">
+        2019-02-12
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-二月八日" class="post-二月八日 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -456,6 +505,10 @@
       <ul>
         
           <li>
+            <a href="/2019/02/12/19年二月12日/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2019/02/08/二月八日/">(no title)</a>
           </li>
         
@@ -469,10 +522,6 @@
         
           <li>
             <a href="/2019/01/24/一月二十四日/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/24/一月二十三日（无语）/">(no title)</a>
           </li>
         
       </ul>
