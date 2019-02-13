@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="一：Divide and conquer(分治法)：
+ 　　1、计算乘积中对应位的结果。　2、处理进位。乘积计算完后将进位由低位开始向高位进位调整每位符合十进制数
+　　3、去掉前导零。
+class Solution {
+public:
+string multiply(string num1, str">
+  
+
+  
+  
+  
+  
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一：Divide and conquer(分治法)：  　　1、计算乘积中对应位的结果。　2、处理进位。乘积计算完后将进位由低位开始向高位进位调整每位符合十进制数 　　3、去掉前导零。 class Solution { public: string multiply(string num1, string num2) {      int len1=num1.length(),len2=num2.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/02/13/二月十三日/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一：Divide and conquer(分治法)：  　　1、计算乘积中对应位的结果。　2、处理进位。乘积计算完后将进位由低位开始向高位进位调整每位符合十进制数 　　3、去掉前导零。 class Solution { public: string multiply(string num1, string num2) {      int len1=num1.length(),len2=num2.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-13T10:27:52.281Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="一：Divide and conquer(分治法)：  　　1、计算乘积中对应位的结果。　2、处理进位。乘积计算完后将进位由低位开始向高位进位调整每位符合十进制数 　　3、去掉前导零。 class Solution { public: string multiply(string num1, string num2) {      int len1=num1.length(),len2=num2.">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src="//push.zhanzhang.baidu.com/push.js"></script>
+</head></html>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Hexo" rel="home">Hexo</a>
+      </h1>
+      
+        <h2 class="site-description hitokoto"></h2>
+        <script type="text/javascript" src="https://v1.hitokoto.cn/?encode=js"></script>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-二月十三日" class="post-二月十三日 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/02/13/二月十三日/" data-id="cjs31z59e0000hsw4m9ja5mk5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>一：Divide and conquer(分治法)：</p>
+<p> 　　1、计算乘积中对应位的结果。<br>　<br>2、处理进位。乘积计算完后将进位由低位开始向高位进位调整每位符合十进制数</p>
+<p>　　3、去掉前导零。</p>
+<p>class Solution {</p>
+<p>public:</p>
+<pre><code>string multiply(string num1, string num2) {
+
+    int len1=num1.length(),len2=num2.length();
+
+    int len = len1+len2-2;
+
+    int C = 0;
+
+    int R[220]={0};
+
+    string ans;//对应位乘
+
+    for(int i = 0 ; i &lt; len1;i++){
+
+        for(int j = 0;j &lt; len2;j++){
+
+            R[len - i - j]+=((num1[i]-&apos;0&apos;)*(num2[j]-&apos;0&apos;));
+
+        }
+    }
+    //处理进位
+
+    for(int i = 0 ; i &lt; len1+len2 ;i++){
+
+        R[i] += C;
+
+        C = R[i]/10;
+
+        R[i] %= 10;
+    }
+    //处理前导0
+    int k = len1+len2;
+
+    while(!R[k]){
+        k--;
+        if(k&lt;0)
+            return &quot;0&quot;;
+    }
+    //压入string返回
+    for(int i = k ; i &gt;= 0;i--){
+        ans.push_back(R[i]+&apos;0&apos;);
+    }
+    return ans;
+}
+</code></pre><p>};</p>
+<p>二：Dynamic programming(动态规划)：</p>
+<p>这道题目其实就是求两个字符串的最长公共子序列（LCS）的变种：假如word1和word2的长度分别是len1和len2，其最长公共子序列的长度为len，那么最少只需要删除len1 + len2 - len个字符，就可以使得word1和word2变为一样。LCS是一道典型的动态规划题目：我们定义dp[i][j]表示word1的前i个字符和word2的前j个字符的最长公共子序列，那么其状态转移方程为：</p>
+<p>dp[i][j] = dp[i - 1][j - 1] + 1，如果word1[i - 1] == word2[j - 1];</p>
+<p>dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])，如果word1[i - 1] != word2[j - 1]。</p>
+<p>算法的时间复杂度是O(mn)，空间复杂度也是O(mn)。但是注意到dp[i][j]其实只和其临近的常数个状态有关，所以其实空间复杂度还可以进一步优化到min(m,n)。</p>
+<p>class Solution {</p>
+<p>public:</p>
+<pre><code>int minDistance(string word1, string word2) {
+
+    int len1 = word1.length(), len2 = word2.length();
+
+    vector&lt;vector&lt;int&gt;&gt; dp(len1 + 1, vector&lt;int&gt;(len2 + 1, 0));
+
+    for (int i = 1; i &lt;= len1; ++i) {
+
+        for (int j = 1; j &lt;= len2; ++j) {
+
+            if (word1[i - 1] == word2[j - 1]) {
+
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+
+            }
+
+            else {
+
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+    }
+
+    return len1 + len2 - dp[len1][len2] * 2;
+}
+</code></pre><p>};</p>
+<p>三：贪心算法</p>
+<p>class Solution {</p>
+<p>public:</p>
+<pre><code>int findContentChildren(vector&lt;int&gt;&amp; g, vector&lt;int&gt;&amp; s) {
+    sort(g.begin(), g.end());
+    sort(s.begin(), s.end());
+    int i=0, j=0;
+    int count = 0;
+    for(; j&lt;s.size() &amp;&amp; i&lt;g.size(); j++) {
+        if(g[i] &lt;= s[j]) {
+            count ++;
+            i++;
+        }
+    }
+
+    return count;
+}
+</code></pre><p>};</p>
+<p>四：数据结构–后缀树</p>
+<p>假设A[i]结尾的子数组与B[j]结尾的子数组最大公共串为sub(i,j)，且公共串最后一个字符是A[i],B[j].<br>if A[i] == B[j]:<br>    sub(i,j) = sub(i-1,j-1)+1<br>否则：<br>     0</p>
+<p>class Solution(object):</p>
+<pre><code>def findLength(self, A, B):
+    &quot;&quot;&quot;
+    :type A: List[int]
+    :type B: List[int]
+    :rtype: int
+    &quot;&quot;&quot;
+    sub = [[0 for _ in range(len(A))] for _ in range(len(A))]
+    res = 0
+    for i in range(len(A)):
+        for j in range(len(B)):
+            if A[i] == B[j]:
+                if i==0 or j ==0:
+                    sub[i][j] = 1
+                else:
+                    sub[i][j] = sub[i-1][j-1]+1
+                res = max(res,sub[i][j])
+    return res
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2019/02/13/二月十三日/">
+    <time datetime="2019-02-13T10:27:52.149Z" class="entry-date">
+        2019-02-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2019/02/12/19年二月12日/" rel="next">(no title) <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s">
+        <input type="submit" id="searchsubmit" value="搜索">
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/13/二月十三日/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/12/19年二月12日/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/08/二月八日/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/06/二月六日/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/26/一月二十六日/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2019 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/js/share.js'];</script>
+
+<script src="/js/jquery-3.3.1.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
